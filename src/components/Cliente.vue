@@ -1,5 +1,8 @@
 <template>
     <div id="cliente">
+        <input type="text" :value="nome">
+        <hr>
+        <input type="text" :value="descricao">
         <h2>{{nome}}</h2>
         <h3>{{descricao}}</h3>
         {{2 + 2 * 2}}
