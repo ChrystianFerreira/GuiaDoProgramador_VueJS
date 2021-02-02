@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h1>Guia clientes</h1>
-    <Cliente :cliente="clienteChrys"
-    ></Cliente>
+    <Cliente :showIdade='true' :cliente="clienteChrys"/>
+    <Cliente :showIdade='false' :cliente="clienteChrys"/>
     <h1>Lista de produtos</h1>
     <Produto></Produto>
   </div>
