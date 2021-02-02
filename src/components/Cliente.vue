@@ -2,14 +2,8 @@
     <div :class="{'cliente': !isPremium, 'cliente-premium': isPremium}">
         <h4>Nome: {{cliente.nome}}</h4>
         <p>Email: {{cliente.email}}</p>
-        <p v-show="showIdade == true">Idade: {{cliente.idade}}</p>
-        <!-- <p v-else>Esse usuário escondeu a idade</p> 
-              /\ Deve estar logo abaixo de um v-if
-
-            <p v-else-if="...">...</p>        
-            /\ Podem existir quantos quiser, desde que abaixo de um if
-         -->
-
+        <p v-if="showIdade == true">Idade: {{cliente.idade}}</p>
+        <p v-else>Esse usuário escondeu a idade</p> 
     </div>
 </template>
 
