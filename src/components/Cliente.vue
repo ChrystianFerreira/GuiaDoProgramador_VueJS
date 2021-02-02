@@ -1,5 +1,5 @@
 <template>
-    <div id="cliente">
+    <div :class="{'cliente': !isPremium, 'cliente-premium': isPremium}">
         <h4>Nome: {{cliente.nome}}</h4>
         <p>Email: {{cliente.email}}</p>
         <p v-show="showIdade == true">Idade: {{cliente.idade}}</p>
@@ -17,7 +17,7 @@
 export default {
     data(){
         return{
-            
+            isPremium: false
         }
     },
     props: {
@@ -27,9 +27,18 @@ export default {
 }
 </script>
 <style scoped>
-    #cliente{
+    .cliente{
         background-color:#ECE5E3;
         color:black;
+        max-width:600px;
+        height: 180px;
+        padding: 1%;
+        margin-top: 2%; 
+    }
+
+    .cliente-premium{
+        background-color:#3d3d3d;
+        color:yellow;
         max-width:600px;
         height: 180px;
         padding: 1%;
