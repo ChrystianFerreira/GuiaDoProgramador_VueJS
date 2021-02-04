@@ -60,7 +60,3 @@ export default {
 #app {
 }
 </style>
-
-
-
-aaaaaawwwwwwwwwwwwwwwwwweeeeeqqqqqqqqeeeeeeeeeeeeeettttttt
