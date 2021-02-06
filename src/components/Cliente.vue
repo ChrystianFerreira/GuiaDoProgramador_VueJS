@@ -1,7 +1,7 @@
 <template>
     <div :class="{'cliente': !isPremium, 'cliente-premium': isPremium}">
         <h4>Nome: {{cliente.nome}}</h4>
-        <p>Email: {{cliente.email}}</p>
+        <p>Email: {{cliente.email | processarEmail}}</p>
         <p v-if="showIdade == true">Idade: {{cliente.idade}}</p>
         <p v-else>Esse usuário escondeu a idade</p>
         <button @click="mudarCor($event)">Mudar cor</button>
@@ -29,7 +29,21 @@ export default {
             console.log("!  - - - - Emitindo evento no filho - - - -  !");
             this.$emit("meDelete", {idDoCliente: this.cliente.id, component: this})
         },
-        
+
+    },
+    /*
+        Essa maneira de usar filtros está depreciada, de acordo com a documentação
+        do Vue 3.x em diante presente em v3.vuejs.org: 'In 3.x, filters are removed
+        and no longer supported. Instead, we recommend replacing them with method calls
+        or computed properties.'
+
+        Esse 'filtro' na verdade é mais como um pós-processamento dos dados recebidos
+        antes da exibição deles na tela.
+    */
+    filters: {
+        processarEmail(value){
+            return value.toUpperCase();
+        }
     }
 }
 </script>
