@@ -1,6 +1,8 @@
 <template>
   <div id="app">
 
+    
+    <!-- Cadastro de usuários -->
     <hr>
     <h3>Cadastro: </h3>
     <small v-show="deuErro" id="nomeErro">O nome é invalido!</small><br>
@@ -9,24 +11,20 @@
     <input type="number" placeholder="idade" v-model='idadeField'> <br>
     <button @click="cadastrarUsuario">Cadastrar</button>
     <hr>
+    <!-- Fim do cadastro -->
 
+    <!-- Visualização de usuários -->
     <h1>Guia clientes</h1>
     <div v-for="(cliente, index) in clientes" :key="cliente.id">
       <h2>{{index + 1}}</h2>
-      <Cliente :showIdade='true' :cliente="cliente"/>
-      <h4>Edição: </h4>
-      <input type="text" v-model="cliente.nome">
-      <input type="text" v-model="cliente.email">
+      <Cliente :showIdade='true' :cliente="cliente" @meDelete="deletarUsuario($event)" />
     </div>
-
-    <h1>Lista de produtos</h1>
-    <Produto></Produto>
+    <!-- Fim da visualização -->
   </div>
 </template>
 
 <script>
 import Cliente from "./components/Cliente.vue";
-import Produto from "./components/Produto.vue";
 
 export default {
   name: "App",
@@ -60,7 +58,6 @@ export default {
   },
   components: {
     Cliente,
-    Produto,
   },
   methods: {
     cadastrarUsuario: function(){
@@ -78,6 +75,10 @@ export default {
       this.idadeField = 0
       this.deuErro = false;
     }
+  },
+  deletarUsuario: function($event){
+    console.log("! - Evento emitido no filho chegou ao pai. - !")
+    this.clientes = this.clientes.filter(cliente => cliente.id != $event.idDoCliente);
   }
 }
 }

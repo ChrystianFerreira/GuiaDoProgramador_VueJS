@@ -5,6 +5,7 @@
         <p v-if="showIdade == true">Idade: {{cliente.idade}}</p>
         <p v-else>Esse usuário escondeu a idade</p>
         <button @click="mudarCor($event)">Mudar cor</button>
+        <button @click="emitirEventoDelete">Deletar</button>
     </div>
 </template>
 
@@ -23,7 +24,12 @@ export default {
         mudarCor: function($event){
             console.log($event)
             this.isPremium = !this.isPremium;
-        }
+        },
+        emitirEventoDelete: function(){
+            console.log("!  - - - - Emitindo evento no filho - - - -  !");
+            this.$emit("meDelete", {idDoCliente: this.cliente.id, component: this})
+        },
+        
     }
 }
 </script>
