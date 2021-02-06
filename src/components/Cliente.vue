@@ -58,7 +58,7 @@ export default {
         background-color:#ECE5E3;
         color:black;
         max-width:600px;
-        height: 180px;
+        height: 200px;
         padding: 1%;
         margin-top: 2%; 
     }
@@ -67,7 +67,7 @@ export default {
         background-color:#3d3d3d;
         color:yellow;
         max-width:600px;
-        height: 180px;
+        height: 200px;
         padding: 1%;
         margin-top: 2%; 
     }
