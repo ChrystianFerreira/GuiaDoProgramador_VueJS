@@ -1,31 +1,21 @@
 <template>
   <div>
-    <h1></h1>
-
-
-
-  <div class="card mt-2">
-  <div class="card-image">
-    <figure>
-      <img :src="pokemon.front" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-content">
-        <p class="title is-4">{{num}} - {{ name | upper}}</p>
-        <p class="subtitle is-6">{{ pokemon.type }}</p>
+    <div class="card mt-2">
+      <div class="card-image">
+        <figure>
+          <img @mouseup=trocarSprite :src="this.currentImg" alt="Placeholder image" />
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ num }} - {{ name | upper }}</p>
+            <p class="subtitle is-6">{{ pokemon.type }}</p>
+          </div>
+        </div>
+        <div class="content"></div>
       </div>
     </div>
-    <div class="content">
-      
-    </div>
-  </div>
-</div>
-
-
-
-
   </div>
 </template>
 
@@ -33,32 +23,47 @@
 import axios from "axios";
 
 export default {
-  created: function() {
-    axios.get(this.url).then(res => {
+  created: function () {
+    axios.get(this.url).then((res) => {
       this.pokemon.type = res.data.types[0].type.name;
       this.pokemon.front = res.data.sprites.front_default;
       this.pokemon.back = res.data.sprites.back_default;
+      this.currentImg = this.pokemon.front;
       console.log(this.pokemon);
-    })
+    });
   },
-  data(){
-    return{
+  data() {
+    return {
+      currentImg: "",
+      isFront: true,
       pokemon: {
-        type: '',
-        front: '',
-        back: ''
-      }
-    }
-  }, 
+        type: "",
+        front: "",
+        back: "",
+        
+      },
+    };
+  },
   props: {
     num: Number,
     name: String,
     url: String,
   },
   filters: {
-    upper: function(value) {
+    upper: function (value) {
       var newName = value[0].toUpperCase() + value.slice(1);
       return newName;
+    },
+  },
+  methods: {
+    trocarSprite: function() {
+      if(this.isFront){
+        this.isFront = false;
+        this.currentImg = this.pokemon.back
+      } else {
+        this.isFront = true;
+        this.currentImg = this.pokemon.front;
+      }
     }
   }
 };
