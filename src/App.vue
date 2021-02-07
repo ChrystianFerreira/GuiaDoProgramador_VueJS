@@ -1,20 +1,57 @@
 <template>
   <div id="app">
     <!-- Cadastro de usuários -->
-    <hr />
-    <h3>Cadastro:</h3>
-    <small v-show="deuErro" id="nomeErro">O nome é invalido!</small><br />
-    <input type="text" placeholder="nome" v-model="nomeField" /> <br />
-    <input type="email" placeholder="email" v-model="emailField" /> <br />
-    <input type="number" placeholder="idade" v-model="idadeField" /> <br />
-    <button @click="cadastrarUsuario">Cadastrar</button>
-    <hr />
+    <div :class="{ form: !deuErro, formDeuErro: deuErro }">
+      <h3 style="margin-left: 0.25rem">Cadastro</h3>
+      <small
+        style="margin-left: 0.25rem; color: red"
+        v-show="deuErro"
+        id="nomeErro"
+      >Dados invalidos!
+      </small><br/>
+      <p>Nome</p>
+      <input
+        type="text"
+        placeholder="Insira seu nome"
+        v-model="nomeField"
+        :class="{
+          'input is-primary mx-1 my-1': !deuErro,
+          'input is-danger mx-1 my-1': deuErro,
+        }"
+      />
+      <br />
+      <p>E-Mail</p>
+      <input
+        type="email"
+        placeholder="Insira seu e-mail"
+        v-model="emailField"
+        :class="{
+          'input is-primary mx-1 my-1': !deuErro,
+          'input is-danger mx-1 my-1': deuErro,
+        }"
+      />
+      <p>Idade</p>
+      <input
+        type="number"
+        v-model="idadeField"
+        :class="{
+          'input is-przimary mx-1 my-1': !deuErro,
+          'input is-danger mx-1 my-1': deuErro,
+        }"
+      />
+      <button
+        class="button is-primary is-small"
+        style="margin-left: 0.25rem"
+        @click="cadastrarUsuario"
+      >
+        Cadastrar
+      </button>
+    </div>
     <!-- Fim do cadastro -->
 
     <!-- Visualização de usuários -->
     <h1>Guia clientes</h1>
-    <div v-for="(cliente, index) in orderClientes" :key="cliente.id">
-      <h2>{{ index + 1 }}</h2>
+    <div v-for="cliente in orderClientes" :key="cliente.id">
       <Cliente
         :showIdade="true"
         :cliente="cliente"
@@ -56,24 +93,6 @@ export default {
           email: "chrystian.c@gmail.com",
           idade: 21,
         },
-        {
-          id: 4,
-          nome: "Arrzo Vacancy",
-          email: "chrystian.a@gmail.com",
-          idade: 22,
-        },
-        {
-          id: 5,
-          nome: "Btata Finances",
-          email: "chrystian.b@gmail.com",
-          idade: 23,
-        },
-        {
-          id: 6,
-          nome: "Feijão Buildings",
-          email: "chrystian.c@gmail.com",
-          idade: 24,
-        },
       ],
     };
   },
@@ -109,15 +128,33 @@ export default {
     },
   },
   computed: {
-    orderClientes: function() {
-      return _.orderBy(this.clientes,[item => item.nome.toLowerCase()],['asc']);
-    }
-  }
+    orderClientes: function () {
+      return _.orderBy(this.clientes,[(item) => item.nome.toLowerCase()],["asc"]);
+    },
+  },
 };
 </script>
 
 <style>
-#nomeErro {
-  color: red;
+.form {
+  margin: 5px;
+  border: 1px solid rgb(0, 0, 255);
+  border-radius: 4px;
+
+  padding: 15px 10px 5px 10px;
+  background-color: #dce2ff;
+  width: 400px;
+  height: 320px;
+}
+
+.formDeuErro {
+  margin: 5px;
+  border: 1px solid red;
+  border-radius: 4px;
+
+  padding: 15px 10px 5px 10px;
+  background-color: #ffb56f;
+  width: 400px;
+  height: 320px;
 }
 </style>
