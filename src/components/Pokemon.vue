@@ -1,7 +1,31 @@
 <template>
   <div>
-    <h1>{{num}} {{ name | upper}}</h1>
-    <small>{{ url }}</small>
+    <h1></h1>
+
+
+
+  <div class="card mt-2">
+  <div class="card-image">
+    <figure>
+      <img :src="pokemon.front" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">{{num}} - {{ name | upper}}</p>
+        <p class="subtitle is-6">{{ pokemon.type }}</p>
+      </div>
+    </div>
+    <div class="content">
+      
+    </div>
+  </div>
+</div>
+
+
+
+
   </div>
 </template>
 
@@ -19,7 +43,11 @@ export default {
   },
   data(){
     return{
-      pokemon: {}
+      pokemon: {
+        type: '',
+        front: '',
+        back: ''
+      }
     }
   }, 
   props: {
