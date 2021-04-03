@@ -1,6 +1,6 @@
 ## Curso de VueJS - Guia do programador
 
-Repositório referente ao conteúdo lecionado no curso gratuito de VueJS do canal Guia do Programador. O estudo foi motivado por demandas no trabalho, com objetivo final de aprender o essencial e criar um repasse do conteúdo para minha equipe, Jovens Padawans.
+Repositório referente ao conteúdo lecionado no <a href="https://www.youtube.com/watch?v=npA_f0ztIt0&list=PLJ_KhUnlXUPteacVhunyK5M8SKIadeED0">curso gratuito de VueJS do canal Guia do Programador</a>. O estudo foi motivado por demandas no trabalho, com objetivo final de aprender o essencial e criar um repasse do conteúdo para minha equipe, Jovens Padawans.
 
 ## Branches
 O projeto contém três branches que, acessando o histórico de commits, se encontra o conteúdo ensinado em cada uma das aulas.:
